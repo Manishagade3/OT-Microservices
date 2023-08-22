@@ -1,0 +1,41 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: empms-salary
+  name: empms-salary
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: empms-salary
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: empms-salary
+    spec:
+      containers:
+      - image: manishagade/myrepo1:OTsalary
+        imagePullPolicy: Always
+        name: empms-salary
+        ports:
+        - containerPort: 8080
+        resources: {}
+
+---
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: empms-salary
+spec:
+  selector:
+    app: empms-salary
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
