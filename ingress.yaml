@@ -1,0 +1,137 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: employee-ingress
+spec:
+  ingressClassName: traefik
+  rules:
+    - host: a983c1ead3dee4cc182eb1cf86b5c508-1352709729.us-east-1.elb.amazonaws.com 
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: empms-frontend
+                port:
+                  number: 3000
+          - path: /employee/create
+            pathType: Prefix
+            backend:
+              service:
+                name: empms-employee
+                port:
+                  number: 8083
+          - path: /employee/search
+            pathType: Prefix
+            backend:
+              service:
+                name: empms-employee
+                port:
+                  number: 8083
+          - path: /employee/search/all
+            pathType: Prefix
+            backend:
+              service:
+                name: empms-employee
+                port:
+                  number: 8083
+
+          - path: /employee/search/roles
+            pathType: Prefix
+            backend:
+              service:
+                name: empms-employee
+                port:
+                  number: 8083       
+                  
+          - path: /employee/search/location
+            pathType: Prefix
+            backend:
+              service:
+                name: empms-employee
+                port:
+                  number: 8083
+          
+          - path: /employee/search/status
+            pathType: Prefix
+            backend:
+              service:
+                name: empms-employee
+                port:
+                  number: 8083
+
+          - path: /employee/healthz
+            pathType: Prefix
+            backend:
+              service:
+                name: empms-employee
+                port:
+                  number: 8083
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: attendance-ingress
+spec:
+  ingressClassName: traefik
+  rules:
+    - host: a983c1ead3dee4cc182eb1cf86b5c508-1352709729.us-east-1.elb.amazonaws.com  
+      http:
+        paths:
+          - path: /attendance/create
+            pathType: Prefix
+            backend:
+              service:
+                name: empms-attendance
+                port:
+                  number: 8081
+          - path: /attendance/search
+            pathType: Prefix
+            backend:
+              service:
+                name: empms-attendance
+                port:
+                  number: 8081
+          - path: /attendance/healthz
+            pathType: Prefix
+            backend:
+              service:
+                name: empms-attendance
+                port:
+                  number: 8081
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: salary-ingress
+spec:
+  ingressClassName: traefik
+  rules:
+    - host: a983c1ead3dee4cc182eb1cf86b5c508-1352709729.us-east-1.elb.amazonaws.com
+      http:
+        paths:
+          - path: /salary/search/all
+            pathType: Prefix
+            backend:
+              service:
+                name: empms-salary
+                port:
+                  number: 8080
+          - path: /salary/healthz
+            pathType: Prefix
+            backend:
+              service:
+                name: empms-salary
+                port:
+                  number: 8080
+
+---
+apiVersion: networking.k8s.io/v1
+kind: IngressClass
+metadata:
+  name: traefik
+spec:
+  controller: traefik.io/ingress-controller
