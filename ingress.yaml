@@ -5,7 +5,7 @@ metadata:
 spec:
   ingressClassName: traefik
   rules:
-    - host: a983c1ead3dee4cc182eb1cf86b5c508-1352709729.us-east-1.elb.amazonaws.com 
+    - host: abfd6016ae66d46569533ce94ab15bae-1754241985.us-east-1.elb.amazonaws.com 
       http:
         paths:
           - path: /
@@ -77,7 +77,7 @@ metadata:
 spec:
   ingressClassName: traefik
   rules:
-    - host: a983c1ead3dee4cc182eb1cf86b5c508-1352709729.us-east-1.elb.amazonaws.com  
+    - host: abfd6016ae66d46569533ce94ab15bae-1754241985.us-east-1.elb.amazonaws.com 
       http:
         paths:
           - path: /attendance/create
@@ -110,7 +110,7 @@ metadata:
 spec:
   ingressClassName: traefik
   rules:
-    - host: a983c1ead3dee4cc182eb1cf86b5c508-1352709729.us-east-1.elb.amazonaws.com
+    - host: abfd6016ae66d46569533ce94ab15bae-1754241985.us-east-1.elb.amazonaws.com
       http:
         paths:
           - path: /salary/search/all
