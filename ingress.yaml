@@ -5,7 +5,7 @@ metadata:
 spec:
   ingressClassName: traefik
   rules:
-    - host: abfd6016ae66d46569533ce94ab15bae-1754241985.us-east-1.elb.amazonaws.com 
+    - host: abfd6016ae66d46569533ce94ab15bae-1754241985.us-east-1.elb.amazonaws.com
       http:
         paths:
           - path: /
