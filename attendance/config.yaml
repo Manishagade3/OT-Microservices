@@ -3,6 +3,6 @@ attendance:
 
 mysql:
   db_name: ""
-  host: "http://adbd005339cb54ae5a8494b8391b1767-762925567.us-east-1.elb.amazonaws.com:3306"
+  host: "empms-db:3306"
   username: root
   password: password
