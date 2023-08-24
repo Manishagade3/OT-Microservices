@@ -1,0 +1,23 @@
+# values.yaml
+ingressHost: ad0362776bacc49de98dc2291bc06228-1842871439.us-east-1.elb.amazonaws.com
+
+paths:
+  frontend:
+    /: empms-frontend
+  employee:
+    /employee/create: empms-employee
+    /employee/search: empms-employee
+    /employee/search/all: empms-employee
+    /employee/search/roles: empms-employee
+    /employee/search/location: empms-employee
+    /employee/search/status: empms-employee
+    /employee/healthz: empms-employee
+
+  attendance:
+    /attendance/create: empms-attendance
+    /attendance/search: empms-attendance
+    /attendance/healthz: empms-attendance
+
+  salary:
+    /salary/search/all: empms-salary
+    /salary/healthz: empms-salary
