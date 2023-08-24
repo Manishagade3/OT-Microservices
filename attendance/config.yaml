@@ -2,7 +2,7 @@ attendance:
   api_port: "8081"
 
 mysql:
-  db_name: "attendance_db"
+  db_name: "adbd005339cb54ae5a8494b8391b1767-762925567.us-east-1.elb.amazonaws.com:3306"
   host: "empms-db:3306"
   username: root
   password: password
