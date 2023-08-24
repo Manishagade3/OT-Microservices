@@ -1,5 +1,5 @@
 # values.yaml
-ingressHost: ad0362776bacc49de98dc2291bc06228-1842871439.us-east-1.elb.amazonaws.com
+# ingressHost: ad0362776bacc49de98dc2291bc06228-1842871439.us-east-1.elb.amazonaws.com
 
 paths:
   frontend:
