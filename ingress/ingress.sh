@@ -11,4 +11,4 @@ echo "Waiting for 20 seconds..."
 sleep 10
 LB_DNS=$(sudo kubectl get svc traefik -n traefik -o jsonpath='{.status.loadBalancer.ingress[0].hostname}' | tr -d '\n')
 echo "LoadBalancer DNS: $LB_DNS"
-sudo helm upgrade --install ingress ./ingress/helm-chart -f ./ingress/values.yaml --set ingressHost=$LB_DNS 
+sudo helm upgrade --install ingress helm-chart -f values.yaml --set ingressHost=$LB_DNS 
