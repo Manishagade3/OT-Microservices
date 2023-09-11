@@ -59,7 +59,7 @@ jobs:
 
       - name: Deploy to EKS
         run: |
-          helm install ingress ./ingress/helm-chart 
+          sudo helm install ingress ./ingress/helm-chart 
           helm install attendance ./attendance/helm-chart
           helm install frontend ./frontend/helm-chart
           helm install employee ./employee/helm-chart
