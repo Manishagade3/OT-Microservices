@@ -1,0 +1,71 @@
+
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]      
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Set up AWS CLI
+        uses: aws-actions/configure-aws-credentials@v3
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ vars.REGION }}
+
+      # - name: Log in to Amazon ECR
+      #   id: login-ecr
+      #   uses: aws-actions/amazon-ecr-login@v1    
+
+      # - name: Push Docker Image to ECR
+      #   run: |
+      #     docker build -t ${{ vars.ECR_REGISTRY }}/${{ vars.ECR_REPO }}:v1 .
+      #     docker push ${{ vars.ECR_REGISTRY }}/${{ vars.ECR_REPO }}:v1
+      #   env:
+      #     AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      #     AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      #     AWS_DEFAULT_REGION: ${{ env.REGION }}
+      #     ECR_REGISTRY: ${{ env.ECR_REGISTRY }}
+      #     ECR_REPO: ${{ env.ECR_REPO }}
+      #     IMAGE_TAG: ${{ github.sha }}  
+        
+
+      - name: install kubectl
+        uses: azure/setup-kubectl@v3
+        with:
+          version: 'v1.27.4' # default is latest stable
+        id: install    
+
+      - name: install helm
+        uses: azure/setup-helm@v3
+        with:
+          version: 'v3.12.0' # default is latest (stable)
+          #token: ${{ secrets.GITHUB_TOKEN }} # only needed if version is 'latest'
+        id: install_helm
+
+      - name: Update kube config
+        run: aws eks update-kubeconfig --name OT-cluster   --region us-east-1
+
+      - name: Deploy to EKS
+        run: |
+          helm install ./ingress/helm-chart 
+          helm install ./attendance/helm-chart
+          helm install ./frontend/helm-chart
+          helm install ./employee/helm-chart
+          helm install ./salary/helm-chart
+          helm install ./elasticsearch/helm-chart
+          helm install ./mysql/helm-chart
+          
+
+     
