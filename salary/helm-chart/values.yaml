@@ -8,7 +8,7 @@ image:
   repository: 333920746455.dkr.ecr.us-east-1.amazonaws.com/ot-salary
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "4"
+  tag: "17"
 
 imagePullSecrets: []
 nameOverride: "empms-salary"
