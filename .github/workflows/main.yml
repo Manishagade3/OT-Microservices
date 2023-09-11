@@ -15,7 +15,7 @@ jobs:
       - name: Checkout Source Code
         uses: actions/checkout@v4
         with:
-          ref: main
+          ref: master
 
       - name: Set up AWS CLI
         uses: aws-actions/configure-aws-credentials@v3
