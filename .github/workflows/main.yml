@@ -60,13 +60,12 @@ jobs:
       - name: Deploy to EKS
         run: |
           kubectl get svc -A
-          # helm install attendance ./attendance/helm-chart
-          # helm install frontend ./frontend/helm-chart
-          # helm install employee ./employee/helm-chart
-          # helm install salary ./salary/helm-chart
-          # helm install es ./elasticsearch/helm-chart
-          # helm install mysql ./mysql/helm-chart
-          helm install ingress ./ingress/helm-chart -f ./ingress/values.yaml
+          helm upgrade attendance ./attendance/helm-chart
+          helm upgrade frontend ./frontend/helm-chart
+          helm upgrade employee ./employee/helm-chart
+          helm upgrade salary ./salary/helm-chart
+          helm upgrade es ./elasticsearch/helm-chart
+          helm upgrade ingress ./ingress/helm-chart -f ./ingress/values.yaml
         
           
 
