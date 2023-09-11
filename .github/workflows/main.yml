@@ -59,13 +59,13 @@ jobs:
 
       - name: Deploy to EKS
         run: |
-          helm install ./ingress/helm-chart 
-          helm install ./attendance/helm-chart
-          helm install ./frontend/helm-chart
-          helm install ./employee/helm-chart
-          helm install ./salary/helm-chart
-          helm install ./elasticsearch/helm-chart
-          helm install ./mysql/helm-chart
+          helm install ingress ./ingress/helm-chart 
+          helm install attendance ./attendance/helm-chart
+          helm install frontend ./frontend/helm-chart
+          helm install employee ./employee/helm-chart
+          helm install salary ./salary/helm-chart
+          helm install es ./elasticsearch/helm-chart
+          helm install mysql ./mysql/helm-chart
           
 
      
